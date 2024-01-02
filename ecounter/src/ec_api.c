@@ -11,6 +11,7 @@ void ec_inst_init_raw(ec_inst_t* inst, uint32_t item_size, void* pool, uint32_t 
     inst->item_end = pool;
     inst->item_capacity_end = (uint8_t*)pool + inst->item_capacity * item_size;
     inst->items = pool;
+    inst->mark = 0x175BB517;
 }
 
 void ec_inst_register(ec_inst_t* inst, const char *name) {

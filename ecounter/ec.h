@@ -12,14 +12,16 @@ extern "C" {
 #endif
 
 typedef struct ec_instance {
-    struct ec_instance* next;
-    const char *name;
+    void* items;
+    uint32_t mark; // To identify if the machine's bit length is 32 or 64.
     uint32_t item_size;
     uint32_t item_capacity;
+    uint32_t reserved;
     void* item_start;
     void* item_end;
     void* item_capacity_end;
-    void* items;
+    struct ec_instance* next;
+    const char *name;
 } ec_inst_t;
 
 void ec_inst_init_raw(ec_inst_t* inst, uint32_t item_size, void* pool, uint32_t pool_size);
